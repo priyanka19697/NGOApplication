@@ -6,12 +6,12 @@ class UsersController < ApplicationController
   def create
     # @user = User.new(params[:user])
     @user = User.new(user_params)
-    byebug
+    @user.isOrganizer= false
     if @user.save
-      # byebug
+      log_in @user
       flash[:success] = "Welcome to the Sample App!"
-      #handle a successful save
-      redirect_to campaigns_url
+      #handle a successful save and show him campaigns page
+      # redirect_to campaigns_url
     else 
       render 'new'
     end
