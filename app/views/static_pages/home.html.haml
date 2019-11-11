@@ -1,8 +1,9 @@
-- title = "Home"
-%title
-  = "#{title}"+" | Donate"
-.center.jumbotron
-  %h1 Welcome Human
-  %h2
-    Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, sunt dolore ipsa minima unde inventore pariatur. Dignissimos ipsa saepe est doloremque,
-  = link_to "Sign up now!", signup_path, class: "btn btn-lg btn-primary"
+- if logged_in?
+  =render 'shared/logged_in_home'
+- else
+  =render 'shared/not_logged_in'
+-#   .col-md-8
+-#     %h3 Campaign Feed
+-#     =render 'campaigns/show' ,:campaigns => @campaigns
+
+

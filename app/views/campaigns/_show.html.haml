@@ -1,0 +1,11 @@
+.row
+  .col-md-4
+  %aside.user_info
+  .col-md-8
+  - if campaigns && campaigns.any?
+    %h3
+      All Campaigns (#{campaigns.count})
+    %ol.campaigns
+      = render campaigns
+      
+

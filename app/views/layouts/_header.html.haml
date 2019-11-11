@@ -6,28 +6,16 @@
         %ul.nav.navbar-nav.navbar-right
           %li= link_to "Home", root_path
           %li= link_to "About", about_path
-          -# %li= link_to "Log in", login_path
-          - if logged_in? && organizer?
-            %li= link_to "Oragnizer", users_path
+    
+          - if logged_in?
+            %li= link_to "All Campaigns", campaigns_path
             %li.dropdown
               %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
                 Account
                 %b.caret
               %ul.dropdown-menu
-                %li= link_to "Profile", current_user
-                %li= link_to "Settings", '#'
-                %li.divider
-                %li
-                  = link_to "Log out", logout_path, method: :delete
-          - elsif logged_in? && !organizer? 
-            %li= link_to "Users", users_path
-            %li.dropdown
-              %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
-                Account
-                %b.caret
-              %ul.dropdown-menu
-                %li= link_to "Profile", current_user
-                %li= link_to "Settings", '#'
+                %li= link_to "My Campaigns", current_user
+                %li= link_to "My Donations", donations_user_url(current_user)
                 %li.divider
                 %li
                   = link_to "Log out", logout_path, method: :delete

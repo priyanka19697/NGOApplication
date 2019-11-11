@@ -1,0 +1,10 @@
+- @user ||= current_user
+.stats
+  %a{:href => "#{donations_user_path(@user)}"}
+    %strong#following.stat
+      = @user.donations.count
+    donations
+-#   %a{:href => "#{funds_user_path(@user)}"}
+-#     %strong#followers.stat
+-#       = @user.funds.count
+-#     funds

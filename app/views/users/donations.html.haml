@@ -1,0 +1,22 @@
+
+- provide(:title, @user.name)
+.row
+  .col
+  - if @user.donations.any?
+    %h3
+      My Donations (#{@user.get_my_donations(@user).count}) 
+    %ol.campaigns
+      = @user.get_my_donations(@user)
+
+
+    -# render @campaigns will render _micropost.html for each micropost it has and send id default.
+ 
+
+
+
+
+
+    -# render @campaigns will render _micropost.html for each micropost it has and send id default.
+ 
+
+

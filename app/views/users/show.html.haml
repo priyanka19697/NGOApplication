@@ -1,0 +1,44 @@
+- provide(:title, @user.name)
+.row
+  .col
+  %aside.user_info
+    %h1
+      = @user.name
+  .col
+  - if @user.campaigns.any?
+    %h3
+      My Campaigns (#{@user.campaigns.count})
+    %ol.campaigns
+      = render @campaigns
+  .col
+  - if @user.donations.any?
+    %h3
+      My Donations (#{@user.get_my_donations(@user).count}) 
+    %ol.campaigns
+      = @user.get_my_donations(@user)
+  .col
+  - if @user.donations.any?
+    %h3
+      Donated Amount
+    %ol.campaigns
+      =@user.get_donated_amount(@user)
+  .col
+    %h3
+      Funds Collected (#{@user.funds_collected(@user).count})
+    %ol.campaigns
+      = @user.funds_collected_from(@user)
+
+
+
+
+    -# render @campaigns will render _micropost.html for each micropost it has and send id default.
+ 
+
+
+
+
+
+    -# render @campaigns will render _micropost.html for each micropost it has and send id default.
+ 
+
+

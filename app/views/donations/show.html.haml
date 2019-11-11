@@ -1,0 +1,11 @@
+.row
+  .col-md-4
+  %aside.user_info
+  .col-md-8
+  - if @donations.any?
+    %h3
+      Donated Campaigns (#{@donations.count})
+    %ol.campaigns
+      = @donations
+      
+

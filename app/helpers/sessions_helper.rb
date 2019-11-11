@@ -22,4 +22,17 @@ module SessionsHelper
     @current_user = nil
   end
 
+  def logged_in_user
+    unless logged_in?
+      flash[:danger] = "Please log in."
+      redirect_to login_url
+    end
+  end
+
+  def donations
+    @user = User.find(params[:user_id])
+    @donations = Donation.where(donor_id:@user.id)
+    render @donations
+  end
+
 end

@@ -20,6 +20,9 @@ gem 'bootsnap',                   '1.4.4', require: false
 gem 'erb2haml', :group => :development
 gem "haml"
 gem "haml-rails"
+gem "image_processing",  '1.9.3'
+gem "mini_magick", '4.9.5'
+
 
 group :development, :test do
   gem 'sqlite3', '1.4.1'

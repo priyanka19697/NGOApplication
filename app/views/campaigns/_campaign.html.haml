@@ -1,0 +1,12 @@
+
+%li{:id => "campaign-#{campaign.id}"}
+  %span.content= campaign.content
+  = image_tag campaign.display_image if campaign.image.attached?
+  %span.timestamp
+    created #{time_ago_in_words(campaign.created_at)} ago.
+    = link_to "donate", donate_url(current_user.id, campaign.id), method: :post
+    -# - if current_user?(campaign.user)
+    -#   = link_to "delete", campaign, method: :delete, data: {confirm: "You sure?"}
+    -#%span.content= campaign.content
+
+
