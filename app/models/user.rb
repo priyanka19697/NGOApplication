@@ -2,8 +2,7 @@ class User < ApplicationRecord
   has_many :campaigns, dependent: :destroy
   has_many :given_donations, class_name: "Donation", foreign_key: "donor_id", dependent: :destroy
   has_many :donations, through: :given_donations, source: :campaign
-  # has_many :recieved_funds, class_name: "Donation", foreign_key: "campaign_id", dependent: :destroy
-  # has_many :funds, through: :recieved_funds, source: :donor
+
   before_save { self.email = email.downcase }
   validates :name, presence: true, length: { maximum: 50 }
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
@@ -24,23 +23,6 @@ class User < ApplicationRecord
   def feed
     Campaign.where("user_id = ?", id)
   end
-
-  # def donate(campaign, user, amount)
-  #   Donation.create(donor_id: user.id, campaign_id: campaign.id, amount:amount)
-  # end
-
-  # def get_my_donations(user)
-  #   @donated_campaigns = []
-  #   @donations_made = Donation.where(donor_id:user.id)
-  #   user.donations.each do |donation|
-  #     campaign = donation
-  #     byebug
-  #     # campaign.content = donation.content
-  #     # campaign.id = donation.id
-  #     @donated_campaigns << campaigns
-  #   end
-  #   return @donated_campaigns
-  # end
 
   def get_donated_amount(user)
     @amount = 0
@@ -71,7 +53,6 @@ class User < ApplicationRecord
       @donations = Donation.where(campaign_id:campaign.id)
       @donations.each do |donation|
         users = User.all.where(id:donation.donor_id)
-        # user.id = donation.donor_id
         users.each do |single_user|
           user = User.find(single_user.id)
           @users << user

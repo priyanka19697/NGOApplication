@@ -3,8 +3,7 @@ class StaticPagesController < ApplicationController
     if logged_in?
       @campaign = current_user.campaigns.build 
     else
-    # @feed_items = current_user.feed
-    redirect_to signup_url
+      redirect_to signup_url
     end
   end
 

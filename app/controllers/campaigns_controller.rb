@@ -30,11 +30,11 @@ class CampaignsController < ApplicationController
     end
   end
 
-  def destroy
-    @campaign.destroy
-    flash[:success] = "Campaign deleted"
-    redirect_to request.referrer || root_url
-  end
+  # def destroy
+  #   @campaign.destroy
+  #   flash[:success] = "Campaign deleted"
+  #   redirect_to request.referrer || root_url
+  # end
 
   def update
     @user = User.find(params[:id])

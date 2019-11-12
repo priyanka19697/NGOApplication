@@ -25,9 +25,6 @@ class UsersController < ApplicationController
 
   def donations
     @user = User.find(params[:id])
-    # @user.get_my_donations(@user)
-    # @user.get_donated_amount(@user)
-    # @donations = Donation.where(donor_id:@user.id)
   end
 
   def funds_from

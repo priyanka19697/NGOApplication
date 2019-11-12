@@ -16,7 +16,6 @@
       My Donations (#{@user.donations.count}) 
     %ol.campaigns
       = render @user.donations
-      -# = @user.get_my_donations(@user)
   .col
   - if @user.donations.any?
     %h3
@@ -27,21 +26,9 @@
   - @users = @user.funds_collected_from(@user)
   - if @users.any?
     %h3
-      Funds Collected From (#{@users.count})
+      Users who donated to my campaigns (#{@users.count})
     %ol.campaigns
-      = @users
-
-
-
-
-    -# render @campaigns will render _micropost.html for each micropost it has and send id default.
- 
-
-
-
-
-
-    -# render @campaigns will render _micropost.html for each micropost it has and send id default.
+      = render @users
  
 
 
