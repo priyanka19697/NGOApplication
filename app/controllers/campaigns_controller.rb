@@ -9,20 +9,14 @@ class CampaignsController < ApplicationController
     @campaigns = Campaign.all 
   end
 
-  # def donate
-  #   @user = User.find(params[:user_id])
-  #   @campaign = Campaign.find(params[:campaign_id])
-  #   @donation = Donation.create(campaign_id:@campaign.id, donor_id:@user.id,amount: 500)
-  #   @donation.save
-  #   redirect_to donations_user_url
-  # end
+  def donations
+    @campaign = Campaign.find(params[:campaign_id])
+  end
 
   def edit
     @user = User.find(params[:user_id])
     @campaign = Campaign.find(params[:campaign_id])
-    # @donation = Donation.create(campaign_id:@campaign.id, donor_id:@user.id,amount: 500)
-    # @donation.save
-    # redirect_to donations_user_url(@user.id, @campaign.id)
+
   end
 
   def create
@@ -32,7 +26,6 @@ class CampaignsController < ApplicationController
       flash[:success] = "campaign created!"
       redirect_to root_url
     else
-      @feed_items = current_user.feed
       render 'static_pages/home'
     end
   end

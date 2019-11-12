@@ -13,9 +13,10 @@
   .col
   - if @user.donations.any?
     %h3
-      My Donations (#{@user.get_my_donations(@user).count}) 
+      My Donations (#{@user.donations.count}) 
     %ol.campaigns
-      = @user.get_my_donations(@user)
+      = render @user.donations
+      -# = @user.get_my_donations(@user)
   .col
   - if @user.donations.any?
     %h3
@@ -23,10 +24,12 @@
     %ol.campaigns
       =@user.get_donated_amount(@user)
   .col
+  - @users = @user.funds_collected_from(@user)
+  - if @users.any?
     %h3
-      Funds Collected (#{@user.funds_collected(@user).count})
+      Funds Collected From (#{@users.count})
     %ol.campaigns
-      = @user.funds_collected_from(@user)
+      = @users
 
 
 

@@ -13,8 +13,9 @@ Rails.application.routes.draw do
   delete '/logout', to: 'sessions#destroy'
   get '/campaigns', to: 'campaigns#show'
   get 'campaign', to: 'campaigns#show'
-  post 'users/:user_id/campaigns/:campaign_id/edit', to: 'donations#new', as: 'donate'
-  get 'users/:user_id/campaigns/:campaign_id/edit', to: 'campaigns#donations', as: 'my_donations'
+  get 'users/:user_id/campaigns/:campaign_id', to: 'campaigns#donations', as: 'my_donations'
+  patch 'users/:user_id/campaigns/:campaign_id', to: 'donations#new', as: 'create_donations'
+  patch 'users/:user_id/campaigns/:campaign_id/donate', to: 'donations#create', as: 'donate'
 
   resources :campaigns
 
@@ -24,11 +25,11 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :campaigns do 
-    member do
-      post 'donate' 
-    end
-  end 
+  # resources :campaigns do 
+  #   member do
+  #     post 'donate' 
+  #   end
+  # end 
 
 
 

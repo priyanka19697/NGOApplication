@@ -9,6 +9,6 @@ class CreateDonations < ActiveRecord::Migration[6.0]
     end
     add_index :donations, :donor_id
     add_index :donations, :campaign_id
-    add_index :donations, [:donor_id, :campaign_id], unique:true 
+    add_index :donations, [:donor_id, :campaign_id]
   end
 end

@@ -1,11 +1,20 @@
-= form_with(model: @campaign, local: true) do |f|
+= form_with(model: @campaign, url: donate_path,  local: true) do |f|
   = render 'shared/error_messages', object: f.object
   .field
     = f.text_area :content,readonly: true
     = f.text_field :duration, readonly: true
     = f.text_field :category, readonly: true 
-    = f.text_field :amount, placeholder: "enter amount"
+    = f.number_field :amount, placeholder: "enter amount"
   = f.submit "Donate", class: "btn btn-primary"
+
+-#   = form_with(model: @campaign, local: true) do |f|
+-#   = render 'shared/error_messages', object: f.object
+-#   .field
+-#     = f.text_area :content,readonly: true
+-#     = f.text_field :duration, readonly: true
+-#     = f.text_field :category, readonly: true 
+-#     = f.text_field :amount, placeholder: "enter amount"
+-#   = f.submit "Donate", class: "btn btn-primary"
 
 -# :javascript
 -#   $("#campaign_image").bind("change", function() {
@@ -15,5 +24,7 @@
 -#   }
 -#   $("#campaign_image").val("");
 -#   });
+-#= form_for @campaign, :url=> url_for(:controller => 'donations_controller', :action => 'create') do |f|
+
 
 

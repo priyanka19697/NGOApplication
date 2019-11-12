@@ -51,7 +51,7 @@ ActiveRecord::Schema.define(version: 2019_11_09_084758) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["campaign_id"], name: "index_donations_on_campaign_id"
-    t.index ["donor_id", "campaign_id"], name: "index_donations_on_donor_id_and_campaign_id", unique: true
+    t.index ["donor_id", "campaign_id"], name: "index_donations_on_donor_id_and_campaign_id"
     t.index ["donor_id"], name: "index_donations_on_donor_id"
   end
 

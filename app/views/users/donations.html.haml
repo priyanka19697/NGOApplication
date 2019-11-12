@@ -4,9 +4,12 @@
   .col
   - if @user.donations.any?
     %h3
-      My Donations (#{@user.get_my_donations(@user).count}) 
+      My Donations (#{@user.donations.count}) 
     %ol.campaigns
-      = @user.get_my_donations(@user)
+      = render @user.donations
+  - else 
+    %h4 You do not have any donations.
+    = link_to " Start donating now", campaigns_path
 
 
     -# render @campaigns will render _micropost.html for each micropost it has and send id default.

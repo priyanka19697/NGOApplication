@@ -25,33 +25,32 @@ class User < ApplicationRecord
     Campaign.where("user_id = ?", id)
   end
 
-  def donate(campaign, user, amount)
-    Donation.create(donor_id: user.id, campaign_id: campaign.id, amount:amount)
-  end
+  # def donate(campaign, user, amount)
+  #   Donation.create(donor_id: user.id, campaign_id: campaign.id, amount:amount)
+  # end
 
-  def get_my_donations(user)
-    @donated_campaigns = []
-    @donations_made = Donation.where(donor_id:user.id)
-    user.donations.each do |donation|
-      campaign = Campaign.new
-      campaign.content = donation.content
-      campaign.id = donation.id
-      @donated_campaigns << campaign
-    end
-    return @donated_campaigns
-    # @donations.each do |donation|
-    #   @amount += donation.amount
-    #   @donated_users << donation.donor_id
-    # end
-  end
+  # def get_my_donations(user)
+  #   @donated_campaigns = []
+  #   @donations_made = Donation.where(donor_id:user.id)
+  #   user.donations.each do |donation|
+  #     campaign = donation
+  #     byebug
+  #     # campaign.content = donation.content
+  #     # campaign.id = donation.id
+  #     @donated_campaigns << campaigns
+  #   end
+  #   return @donated_campaigns
+  # end
 
   def get_donated_amount(user)
     @amount = 0
     @donations_made = Donation.where(donor_id:user.id)
     @donations_made.each do |donation|
-    @amount += donation.amount
-    return @amount
+      if donation.amount != nil
+        @amount = @amount + donation.amount
+      end
     end
+    return @amount
   end
 
   def funds_collected(user)
@@ -71,10 +70,12 @@ class User < ApplicationRecord
     @campaigns.each do |campaign|
       @donations = Donation.where(campaign_id:campaign.id)
       @donations.each do |donation|
-        user = User.new
-        byebug
-        user.id = donation.donor_id
-        @users << user
+        users = User.all.where(id:donation.donor_id)
+        # user.id = donation.donor_id
+        users.each do |single_user|
+          user = User.find(single_user.id)
+          @users << user
+        end
       end
     end
     return @users

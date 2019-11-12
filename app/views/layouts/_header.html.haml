@@ -8,7 +8,16 @@
           %li= link_to "About", about_path
     
           - if logged_in?
-            %li= link_to "All Campaigns", campaigns_path
+            -# %li= link_to "All Campaigns", campaigns_path
+            %li.dropdown
+              %a.dropdown-toggle{"data-toggle" => "dropdown"}
+                Campaigns
+                %b.caret
+              %ul.dropdown-menu
+                -# %li= link_to "Kids campaigns", current_user
+                -# %li= link_to "poor and needy campaigns", current_user 
+                -# %li= link_to "Aged people campaigns", current_user
+                %li= link_to "All Campaigns", campaigns_path
             %li.dropdown
               %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
                 Account
